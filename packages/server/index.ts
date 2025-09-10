@@ -1,10 +1,13 @@
-import  Express  from "express";
-import type {Request,Response} from "express";
-const app=Express();
-const port=process.env.PORT || 3000;
-app.get('/',(_req:Request,res:Response)=>{
-    res.send('Hello World');
+import "dotenv/config";
+import Express from "express";
+import type { Request, Response } from "express";
+const app = Express();
+const port = process.env.PORT || 3000;
+
+app.get("/", (_req: Request, res: Response) => {
+  res.send(process.env.OPENAI_API_KEY || "No API key found");
 });
-app.listen(port,()=>{
-  console.log(`server is running on http://localhost:${port}`);
+
+app.listen(port, () => {
+  console.log(`✅ Server is running on http://localhost:${port}`);
 });
